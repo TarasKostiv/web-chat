@@ -7,7 +7,8 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
 		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-	<!-- <link rel="stylesheet" href="style.css"> -->
+	<link rel="stylesheet" href="style.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js" integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0=" crossorigin="anonymous"></script>
 	<title>Week 18</title>
 </head>
 
@@ -15,13 +16,39 @@
 
 	<div class="container">
 
-		<div class="col-12 mb-3 mt-3">
-			<h1>Room</h1>
-			<div class="col-3 input-group flex-nowrap p-0 mb-3">
-				<input id="roomname-input" type="text" class="form-control" placeholder="Room name" aria-label="RoomName" aria-describedby="addon-wrapping">
+		<div class="col-12 mb-3 mt-3 d-flex align-items-center">
+			<h1 class="mr-1">Room</h1>
+			<textarea id="roomname-input" class="main-input"></textarea>
+			<h1 class="ml-2 mr-1">Nickname</h1>
+			<textarea id="nickname-input" class="main-input"></textarea>
+
+			<button type="button" class="btn btn-outline-secondary ml-2" data-toggle="modal" data-target="#exampleModalCenter">
+				<i class="fas fa-cog"></i>
+			</button>
+
+
+			<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+				<div class="modal-dialog modal-dialog-centered" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalCenterTitle" onclick="saveSettings(false)">Settings</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<div class="input-group-text d-flex align-items-center">
+								<input type="checkbox" id="emojiSpace" class="mt-1 mr-1" >
+								<span>Put space before emoji</span>
+							</div>
+						</div>
+						<!-- <div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="saveSettings(false)">Close</button>
+							<button type="button" class="btn btn-primary" id="btn-save" onclick="saveSettings(true)">Save changes</button>
+						</div> -->
+					</div>
+				</div>
 			</div>
-			<h2>Nickname</h2>
-			<textarea id="nickname-input" class=""></textarea>
 		</div>
 
 		<div id="messages" class="row col-12 border rounded mt-2 p-3 d-block" style="height: 500px; overflow-y: scroll;">
@@ -36,45 +63,56 @@
 		<div class="row col-12 mt-2 ">
 			<div class="input-group mb-3">
 				<div class="input-group-prepend">
+
+					<button class="btn btn-outline-secondary" id="send-btn" type="button" style="font-size: 1.2rem;">Send</button>
 					<button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown"
-						aria-haspopup="true" aria-expanded="false">Other action</button>
-					<div class="dropdown-menu">
-						<a class="dropdown-item" href="#">Action</a>
-						<a class="dropdown-item" href="#">Another action</a>
-						<a class="dropdown-item" href="#">Something else here</a>
-						<div role="separator" class="dropdown-divider"></div>
-						<a class="dropdown-item" href="#">Separated link</a>
-					</div>
-					<button class="btn btn-outline-secondary" id="send-btn" type="button">Send</button>
+					aria-haspopup="true" aria-expanded="false">😀</button>
+				<div class="dropdown-menu">
+					<button class="dropdown-item" onclick="addEmoji(1);">😀</button>
+					<button class="dropdown-item" onclick="addEmoji(2);">😁</button>
+					<button class="dropdown-item" onclick="addEmoji(3);">😂</button>
+					<button class="dropdown-item" onclick="addEmoji(4);">🤣</button>
+					<button class="dropdown-item" onclick="addEmoji(5);">😄</button>
+					<button class="dropdown-item" onclick="addEmoji(6);">😊</button>
+					<button class="dropdown-item" onclick="addEmoji(7);">😋</button>
+					<button class="dropdown-item" onclick="addEmoji(8);">😎</button>
+					<button class="dropdown-item" onclick="addEmoji(9);">😍</button>
+					<button class="dropdown-item" onclick="addEmoji(10);">😘</button>
+					<button class="dropdown-item" onclick="addEmoji(11);">🥰</button>
+					<button class="dropdown-item" onclick="addEmoji(12);">😚</button>
+					<button class="dropdown-item" onclick="addEmoji(13);">🤔</button>
+					<button class="dropdown-item" onclick="addEmoji(14);">🤨</button>
+					<button class="dropdown-item" onclick="addEmoji(15);">😐</button>
+					<button class="dropdown-item" onclick="addEmoji(16);">😑</button>
+					<button class="dropdown-item" onclick="addEmoji(17);">🙄</button>
+					<button class="dropdown-item" onclick="addEmoji(18);">😥</button>
+					<button class="dropdown-item" onclick="addEmoji(19);">😮</button>
+					<button class="dropdown-item" onclick="addEmoji(20);">😪</button>
+					<button class="dropdown-item" onclick="addEmoji(21);">😯</button>
+					<button class="dropdown-item" onclick="addEmoji(22);">😴</button>
+					<button class="dropdown-item" onclick="addEmoji(23);">😜</button>
+					<button class="dropdown-item" onclick="addEmoji(24);">😤</button>
+					<button class="dropdown-item" onclick="addEmoji(25);">😢</button>
+					<button class="dropdown-item" onclick="addEmoji(26);">😨</button>
+					<button class="dropdown-item" onclick="addEmoji(27);">😩</button>
+					<button class="dropdown-item" onclick="addEmoji(28);">😡</button>
+					<button class="dropdown-item" onclick="addEmoji(29);">😠</button>
+					<button class="dropdown-item" onclick="addEmoji(30);">🤬</button>
+					<button class="dropdown-item" onclick="addEmoji(31);">🤥</button>
+					<button class="dropdown-item" onclick="addEmoji(32);">🤫</button>
+					<button class="dropdown-item" onclick="addEmoji(33);">😰</button>
+					<button class="dropdown-item" onclick="addEmoji(34);">😱</button>
+					<button class="dropdown-item" onclick="addEmoji(35);">🥵</button>
+					<button class="dropdown-item" onclick="addEmoji(36);">🥶</button>
+					<button class="dropdown-item" onclick="addEmoji(37);">😳</button>
 				</div>
-				<input type="text" id="message-input" class="form-control" aria-label="Text input with dropdown button">
+				</div>
+				<textarea type="text" id="message-input" class="form-control" aria-label="Text input with dropdown button"></textarea>
 			</div>
 
-			<!-- Button trigger modal
-			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-				Launch demo modal
-			</button>
 
-			Modal 
-			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-				<div class="modal-dialog modal-dialog-centered" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
-						</div>
-						<div class="modal-body">
-							...
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-							<button type="button" class="btn btn-primary">Save changes</button>
-						</div>
-					</div>
-				</div>
-			</div> -->
+
+
 
 		<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
 			integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">

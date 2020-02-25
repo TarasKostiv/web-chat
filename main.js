@@ -2,6 +2,7 @@ console.log("code connected");
 var messages = document.getElementById("messages");
 var roomNameInput = document.getElementById("roomname-input");
 var sendButton = document.getElementById("send-btn");
+var userMessage = document.getElementById("message-input").value;
 
 // по нажатию на кнопку отправить - отправить на сервер nickname:message
 sendButton.addEventListener("click", sendUserMessage);
@@ -11,7 +12,7 @@ start();
 // Каждые 500 милисекунд забирать сообщения
 function start() {
   getMessagesFromServer();
-  setInterval(getMessagesFromServer, 2000);
+  // setInterval(getMessagesFromServer, 2000);
 }
 
 var lastMessages = [];
@@ -41,27 +42,27 @@ async function getMessagesFromServer() {
     scrollToEnd();
   }
 
-  // Запомнить сообщения
+  // Remember message
   lastMessages = response;
 }
 
 // Отправить сообщение
 async function sendUserMessage() {
-  // Получаем название комнаты
+  // Take room name
   var roomname = roomNameInput.value;
 
-  // Получить что написал пользователь в поле nickname
+  // Take what user wrote in nickname input
   var userNickname = document.getElementById("nickname-input").value;
-  // Получить что написал пользователь в поле message
-  var userMessage = document.getElementById("message-input").value;
+  // Take what user wrote in message input
+  userMessage = document.getElementById("message-input").value;
 
   if (userNickname.length === 0) {
-    alert("Ты должен ввести имя!");
+    alert("You should write nickname");
     return;
   }
 
   if (userMessage.length === 0) {
-    alert("Ты должен ввести сообщение!");
+    alert("You should write any message");
     return;
   }
 
@@ -76,12 +77,12 @@ async function sendUserMessage() {
   getMessagesFromServer();
 }
 
-// Сформировать HTML меседжей
+// Formate HTML code
 function fromMessagesHTML(messages) {
   var allMessagesHTML = "";
   for (var i = 0; i < messages.length; i++) {
     var messageData = messages[i];
-    // Создать верстку меседжа
+    // Create message
     var message = `
         <div class="container d-block  ">
 				<div class="row bg-light pt-3 pl-3 pr-3 mb-3 rounded" style="text-align: left ;">
@@ -95,7 +96,77 @@ function fromMessagesHTML(messages) {
   return allMessagesHTML;
 }
 
-// Проскролить до конца
+// Scroll to end
 function scrollToEnd() {
   messages.scrollTop = messages.scrollHeight;
+}
+
+// Add emoji
+
+var emojis = [
+  "😀",
+  "😁",
+  "😂",
+  "🤣",
+  "😄",
+  "😊",
+  "😋",
+  "😎",
+  "😍",
+  "😘",
+  "🥰",
+  "😚",
+  "🤔",
+  "🤨",
+  "😐",
+  "😑",
+  "🙄",
+  "😥",
+  "😮",
+  "😪",
+  "😯",
+  "😴",
+  "😜",
+  "😤",
+  "😢",
+  "😨",
+  "😩",
+  "😡",
+  "😠",
+  "🤬",
+  "🤥",
+  "🤫",
+  "😰",
+  "😱",
+  "🥵",
+  "🥶",
+  "😳"
+];
+
+function addEmoji(emoji) {
+  console.log(emoji - 1);
+  takenEmoji = emojis[emoji - 1];
+  if (putEmojiSpace) {
+    document.getElementById("message-input").value +=
+      userMessage + " " + takenEmoji;
+  } else if (!putEmojiSpace) {
+    document.getElementById("message-input").value += userMessage + takenEmoji;
+  }
+}
+
+// Settings
+
+var putEmojiSpace;
+
+function saveSettings(changes) {
+  if (changes) {
+    if (document.getElementById("emojiSpace").checked === true) {
+      console.log(putEmojiSpace);
+      putEmojiSpace = true;
+    } else if (document.getElementById("emojiSpace").checked === false) {
+      console.log(putEmojiSpace);
+      putEmojiSpace = false;
+    }
+  } else if (!changes) {
+  }
 }
