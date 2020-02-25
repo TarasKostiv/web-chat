@@ -16,36 +16,40 @@
 
 	<div class="container">
 
-		<div class="col-12 mb-3 mt-3 d-flex align-items-center">
+		<div class="col-12 m-0 mb-3 mt-3 header ">
 			<h1 class="mr-1">Room</h1>
 			<textarea id="roomname-input" class="main-input"></textarea>
 			<h1 class="ml-2 mr-1">Nickname</h1>
 			<textarea id="nickname-input" class="main-input"></textarea>
 
-			<button type="button" class="btn btn-outline-secondary ml-2" data-toggle="modal" data-target="#exampleModalCenter">
+			<button type="button" class="btn btn-outline-secondary ml-2 setting" data-toggle="modal" data-target="#staticBackdrop"  onclick="saveSettingOptions();">
 				<i class="fas fa-cog"></i>
 			</button>
 
 
-			<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-				<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal fade" id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+				<div class="modal-dialog" role="document">
 					<div class="modal-content">
 						<div class="modal-header">
-							<h5 class="modal-title" id="exampleModalCenterTitle" onclick="saveSettings(false)">Settings</h5>
+							<h5 class="modal-title" id="staticBackdropLabel" >Settings</h5>
 							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 								<span aria-hidden="true">&times;</span>
 							</button>
 						</div>
 						<div class="modal-body">
 							<div class="input-group-text d-flex align-items-center">
-								<input type="checkbox" id="emojiSpace" class="mt-1 mr-1" >
+								<input type="checkbox" id="emojiSpace" class="mt-1 mr-1">
 								<span>Put space before emoji</span>
 							</div>
+							<div class="input-group-text d-flex align-items-center mt-1">
+								<input type="number" id="fontSize" value="1" min="1" max="120" class=" mr-1">
+								<span>Message font size</span>
+							</div>
 						</div>
-						<!-- <div class="modal-footer">
-							<button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="saveSettings(false)">Close</button>
-							<button type="button" class="btn btn-primary" id="btn-save" onclick="saveSettings(true)">Save changes</button>
-						</div> -->
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="dontSaveSettingOptions();">Not save</button>
+							<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="saveSettings();">Save</button>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -60,7 +64,7 @@
 			</div> -->
 		</div>
 
-		<div class="row col-12 mt-2 ">
+		<div class="row col-12 mt-2 " id="input-group">
 			<div class="input-group mb-3">
 				<div class="input-group-prepend">
 

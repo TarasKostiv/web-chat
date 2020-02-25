@@ -158,15 +158,41 @@ function addEmoji(emoji) {
 
 var putEmojiSpace;
 
-function saveSettings(changes) {
-  if (changes) {
-    if (document.getElementById("emojiSpace").checked === true) {
-      console.log(putEmojiSpace);
-      putEmojiSpace = true;
-    } else if (document.getElementById("emojiSpace").checked === false) {
-      console.log(putEmojiSpace);
-      putEmojiSpace = false;
-    }
-  } else if (!changes) {
+var isSavePutEmojiSpace;
+var emojiSpaceCheckBox = document.getElementById("emojiSpace");
+
+var messageFontSize;
+
+var isChangeMessageFontSize;
+var getFontSize = document.getElementById("fontSize");
+
+function saveSettingOptions() {
+  isSavePutEmojiSpace = emojiSpaceCheckBox.checked;
+  console.log(isSavePutEmojiSpace);
+
+  isChangeMessageFontSize = getFontSize.value;
+  console.log(isChangeMessageFontSize);
+}
+
+function dontSaveSettingOptions() {
+  putEmojiSpace = isSavePutEmojiSpace;
+  emojiSpaceCheckBox.checked = isSavePutEmojiSpace;
+  console.log(putEmojiSpace);
+
+  getFontSize.value = isChangeMessageFontSize;
+  console.log(getFontSize.value);
+}
+
+function saveSettings() {
+  if (emojiSpaceCheckBox.checked === true) {
+    putEmojiSpace = true;
+    console.log(putEmojiSpace);
+  } else if (emojiSpaceCheckBox.checked === false) {
+    putEmojiSpace = false;
+    console.log(putEmojiSpace);
   }
+
+  messageFontSize = getFontSize.value;
+  document.getElementById("message-input").style.fontSize = messageFontSize;
+  console.log(messageFontSize);
 }
