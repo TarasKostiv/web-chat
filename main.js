@@ -12,7 +12,7 @@ start();
 // All 500 milliseconds take messa
 function start() {
   getMessagesFromServer();
-  // setInterval(getMessagesFromServer, 2000);
+  setInterval(getMessagesFromServer, 2000);
 }
 
 var lastMessages = [];
