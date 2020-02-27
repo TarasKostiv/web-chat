@@ -13,6 +13,19 @@ textarea {
   border-radius: 4px;
 }
 
+.info-block {
+  width: 100%;
+  font-weight: 500;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.close-warning {
+  height: 30px;
+}
+
 .header {
   display: flex;
   align-items: center;
@@ -32,22 +45,27 @@ textarea {
   align-items: center;
   justify-content: center;
   font-size: 2rem;
+  padding-bottom: 5px;
   font-weight: 500;
-}
-
-.avatar-placeholder {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 #message {
   width: 100%;
+  font-size: 1.2rem;
+}
+
+.dropdown-menu.show {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 1080px;
+  transform: translate3d(0px, 65px, 0px) !important;
 }
 
 .dropdown-item {
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 1.589rem;
+  width: auto;
 }
 
 #fontSize {

@@ -13,14 +13,20 @@
 </head>
 
 <body>
+	<div class="info-block bg-warning" id="warning-block">
+		<span>Use only Latin letters in "Room" input to join a room </span>
+		<button type="button" class=" ml-2 close close-warning" onclick="closeWarningBlock();">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
 
 	<div class="container">
 
 		<div class="col-12 m-0 mb-3 mt-3 header ">
-			<h1 class="mr-1">Room</h1>
-			<input id="roomname-input" class="main-input form-control">
+			<h1 class="mr-1" >Room</h1>
+			<input id="roomname-input" class="main-input form-control" placeholder="Room name" data-toggle="tooltip" title="Room name must have only letter - without numbers">
 			<h1 class="ml-2 mr-1">Nickname</h1>
-			<input id="nickname-input" class="main-input form-control">
+			<input id="nickname-input" class="main-input form-control" placeholder="Your nickname">
 			<button type="button" class="btn btn-outline-secondary ml-2 setting" data-toggle="modal" data-target="#staticBackdrop"  onclick="saveSettingOptions();">
 				<i class="fas fa-cog"></i>
 			</button>
@@ -38,7 +44,7 @@
 						<div class="modal-body">
 							<div class="input-group-text d-flex align-items-center">
 								<input type="checkbox" id="emojiSpace" class="mt-1 mr-1">
-								<span>Put space before emoji</span>
+								<span>Put space before and after emoji</span>
 							</div>
 							<div class="input-group-text d-flex align-items-center mt-1">
 								<input type="number" id="fontSize" value="1" min="1" max="120" class=" mr-1">
@@ -46,6 +52,7 @@
 							</div>
 						</div>
 						<div class="modal-footer">
+							<button class="btn btn-warning mr-auto" id="btn-reset" data-dismiss="modal" onclick="resetSettings()">Reset settings</button>
 							<button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="dontSaveSettingOptions();">Not save</button>
 							<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="saveSettings();">Save</button>
 						</div>

@@ -75,6 +75,8 @@ async function sendUserMessage() {
   });
 
   getMessagesFromServer();
+
+  document.getElementById("message-input").value = "";
 }
 
 // Creat random color
@@ -101,7 +103,7 @@ function fromMessagesHTML(messages) {
               <div class="avatar border">
                 <span class="avatar-placeholder">${firstLetterOfName}</span>
               </div>
-              <h3 id="nickname" class="ml-1 mt-1">${messageData.Name}</h3>
+              <h4 id="nickname" class="ml-1 mt-1">${messageData.Name}</h4>
             </div><br />
             <p id="message">${messageData.Message}</p>
           </div>
@@ -110,6 +112,13 @@ function fromMessagesHTML(messages) {
     allMessagesHTML = allMessagesHTML + message;
   }
   return allMessagesHTML;
+}
+
+// Close warning block
+var warningBlock = document.getElementById("warning-block");
+
+function closeWarningBlock() {
+  warningBlock.style.cssText = "display: none;";
 }
 
 // Scroll to end
@@ -163,10 +172,9 @@ function addEmoji(emoji) {
   console.log(emoji - 1);
   takenEmoji = emojis[emoji - 1];
   if (putEmojiSpace) {
-    document.getElementById("message-input").value +=
-      userMessage + " " + takenEmoji;
+    document.getElementById("message-input").value += " " + takenEmoji + " ";
   } else if (!putEmojiSpace) {
-    document.getElementById("message-input").value += userMessage + takenEmoji;
+    document.getElementById("message-input").value += takenEmoji;
   }
 }
 
@@ -209,6 +217,16 @@ function saveSettings() {
   }
 
   messageFontSize = getFontSize.value;
-  document.getElementById("message-input").style.fontSize = messageFontSize;
+  document.getElementById("message-input").style.cssText =
+    "font-size:" + messageFontSize + "px ;";
   console.log(messageFontSize);
+}
+
+// reset
+function resetSettings() {
+  getFontSize.value = 1;
+  document.getElementById("message-input").style.cssText = "font-size: 1rem ;";
+
+  emojiSpaceCheckBox.checked = false;
+  putEmojiSpace = false;
 }
