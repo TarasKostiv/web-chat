@@ -18,10 +18,9 @@
 
 		<div class="col-12 m-0 mb-3 mt-3 header ">
 			<h1 class="mr-1">Room</h1>
-			<textarea id="roomname-input" class="main-input"></textarea>
+			<input id="roomname-input" class="main-input form-control">
 			<h1 class="ml-2 mr-1">Nickname</h1>
-			<textarea id="nickname-input" class="main-input"></textarea>
-
+			<input id="nickname-input" class="main-input form-control">
 			<button type="button" class="btn btn-outline-secondary ml-2 setting" data-toggle="modal" data-target="#staticBackdrop"  onclick="saveSettingOptions();">
 				<i class="fas fa-cog"></i>
 			</button>
@@ -57,17 +56,23 @@
 
 		<div id="messages" class="row col-12 border rounded mt-2 p-3 d-block" style="height: 500px; overflow-y: scroll;">
 			<!-- <div class="container d-block  ">
-				<div class="row bg-light pt-3 pl-3 pr-3 mb-3 rounded" style="text-align: left ;">
-					<h3 id="nickname"></h3>
-					<p id="message"></p>
+				<div class="row bg-light pt-3 pl-3 pr-3 mb-3 rounded" style="text-align: left;">
+					<div class="name-container d-flex align-items-center mb-2">
+						<div class="avatar border">
+							<span class="avatar-placeholder"></span>
+						</div>
+						<h3 id="nickname" class="ml-1 mt-1"></h3>
+					</div>
+					<br>
+					<p id="message" style="width: 100%;"></p>
 				</div>
 			</div> -->
 		</div>
 
 		<div class="row col-12 mt-2 " id="input-group">
 			<div class="input-group mb-3">
-				<div class="input-group-prepend">
-
+				<textarea type="text" id="message-input" class="form-control" aria-label="Text input with dropdown button"></textarea>
+				<div class="input-group-append">
 					<button class="btn btn-outline-secondary" id="send-btn" type="button" style="font-size: 1.2rem;">Send</button>
 					<button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown"
 					aria-haspopup="true" aria-expanded="false">😀</button>
@@ -111,7 +116,7 @@
 					<button class="dropdown-item" onclick="addEmoji(37);">😳</button>
 				</div>
 				</div>
-				<textarea type="text" id="message-input" class="form-control" aria-label="Text input with dropdown button"></textarea>
+				
 			</div>
 
 

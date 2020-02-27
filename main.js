@@ -4,40 +4,40 @@ var roomNameInput = document.getElementById("roomname-input");
 var sendButton = document.getElementById("send-btn");
 var userMessage = document.getElementById("message-input").value;
 
-// по нажатию на кнопку отправить - отправить на сервер nickname:message
+// on click send to serever nickname:message
 sendButton.addEventListener("click", sendUserMessage);
 
 start();
 
-// Каждые 500 милисекунд забирать сообщения
+// All 500 milliseconds take messa
 function start() {
   getMessagesFromServer();
   // setInterval(getMessagesFromServer, 2000);
 }
 
 var lastMessages = [];
-// Шаг 1:
-// Получить сообщения с сервера
+// Step 1:
+// Take message from server
 async function getMessagesFromServer() {
-  // Получаем название комнаты
+  // Take room name
   var roomname = roomNameInput.value;
-  // Получаем ассинхронный ответ
+  // Take asynchronous answer
   var response = await fetch(
     `https://fchatiavi.herokuapp.com/get/${roomname}/?offset=0&limit=1000000`
   );
-  // Декодируем его из строки в обьекты javascript
+  // Decoding it from sting to object javascript
   response = await response.json();
 
   if (response == null) {
     messages.innerHTML = "No messages";
     return;
   }
-  // Сформировать HTML меседжей
+  // Creat html messagede
   var messagesHTML = fromMessagesHTML(response);
-  // Добавить в messages-wrapper письма.
+  // Add to messages-wrapper message
   messages.innerHTML = messagesHTML;
 
-  // Если сообщений больше чем в прошлый раз проскролить вниз
+  // Scrool down
   if (lastMessages.length < response.length) {
     scrollToEnd();
   }
@@ -46,7 +46,7 @@ async function getMessagesFromServer() {
   lastMessages = response;
 }
 
-// Отправить сообщение
+// Send message
 async function sendUserMessage() {
   // Take room name
   var roomname = roomNameInput.value;
@@ -77,18 +77,34 @@ async function sendUserMessage() {
   getMessagesFromServer();
 }
 
+// Creat random color
+function getRandomColor() {
+  var color = "";
+  for (var i = 0; i < 3; i++) {
+    var sub = Math.floor(Math.random() * 256).toString(16);
+    color += sub.length == 1 ? "0" + sub : sub;
+  }
+  return "#" + color;
+}
+
 // Formate HTML code
 function fromMessagesHTML(messages) {
   var allMessagesHTML = "";
   for (var i = 0; i < messages.length; i++) {
     var messageData = messages[i];
+    var firstLetterOfName = messageData.Name[0];
     // Create message
     var message = `
-        <div class="container d-block  ">
-				<div class="row bg-light pt-3 pl-3 pr-3 mb-3 rounded" style="text-align: left ;">
-					<h3 id="nickname">${messageData.Name}</h3>
-					<p id="message">${messageData.Message}</p>
-        </div>
+        <div class="container d-block">
+          <div class="row bg-light pt-3 pl-3 pr-3 mb-3 rounded" style="text-align: left;">
+            <div class="name-container d-flex align-items-center mb-2">
+              <div class="avatar border">
+                <span class="avatar-placeholder">${firstLetterOfName}</span>
+              </div>
+              <h3 id="nickname" class="ml-1 mt-1">${messageData.Name}</h3>
+            </div><br />
+            <p id="message">${messageData.Message}</p>
+          </div>
         </div>
       `;
     allMessagesHTML = allMessagesHTML + message;
