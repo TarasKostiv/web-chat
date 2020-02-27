@@ -79,16 +79,6 @@ async function sendUserMessage() {
   document.getElementById("message-input").value = "";
 }
 
-// Creat random color
-function getRandomColor() {
-  var color = "";
-  for (var i = 0; i < 3; i++) {
-    var sub = Math.floor(Math.random() * 256).toString(16);
-    color += sub.length == 1 ? "0" + sub : sub;
-  }
-  return "#" + color;
-}
-
 // Formate HTML code
 function fromMessagesHTML(messages) {
   var allMessagesHTML = "";
@@ -165,7 +155,9 @@ var emojis = [
   "😱",
   "🥵",
   "🥶",
-  "😳"
+  "😳",
+  "🤑",
+  "🤢"
 ];
 
 function addEmoji(emoji) {
