@@ -86,9 +86,6 @@ textarea {
   #input-group {
     margin: auto 0px auto 0px;
   }
-}
-
-@media screen and (max-width: 768px) {
   .header {
     flex-direction: column;
   }
@@ -99,5 +96,52 @@ textarea {
 
   .setting {
     margin-top: 7px;
+  }
+  #warning-block {
+    font-size: 1rem;
+  }
+  .dropdown-menu.show {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 1080px;
+    transform: translate3d(0px, -205px, 0px) !important;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  #warning-block {
+    font-size: 0.8rem;
+  }
+  .dropdown-menu.show {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 1080px;
+    transform: translate3d(0px, -385px, 0px) !important;
+  }
+  #nickname {
+    font-size: 1.2rem;
+  }
+  .avatar {
+    font-size: 1.3rem;
+    height: 50px;
+    width: 50px;
+  }
+  #message {
+    font-size: 0.9rem;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  #warning-block {
+    font-size: 0.7rem;
+  }
+  .dropdown-menu.show {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 1080px;
+    transform: translate3d(0px, -495px, 0px) !important;
   }
 }
