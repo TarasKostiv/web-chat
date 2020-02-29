@@ -216,7 +216,7 @@ function saveSettings() {
 
 // reset
 function resetSettings() {
-  getFontSize.value = 1;
+  getFontSize.value = 16;
   document.getElementById("message-input").style.cssText = "font-size: 1rem ;";
 
   emojiSpaceCheckBox.checked = false;

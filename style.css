@@ -49,6 +49,10 @@ textarea {
   font-weight: 500;
 }
 
+#send-btn {
+  font-size: 1.2rem;
+}
+
 #message {
   width: 100%;
   font-size: 1.2rem;
@@ -127,9 +131,13 @@ textarea {
     font-size: 1.3rem;
     height: 50px;
     width: 50px;
+    padding-bottom: 3px;
   }
   #message {
     font-size: 0.9rem;
+  }
+  #send-btn {
+    font-size: 1rem;
   }
 }
 
